@@ -46,6 +46,16 @@ public:
         }
     }
 
+    void transfer(BankAccount& recipient, double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            recipient.deposit(amount);
+            cout << "Transfer successful. Available Balance: $" << balance << endl;
+        } else {
+            cout << "Insufficient funds for the transfer!" << endl;
+        }
+    }
+
     void display() const {
         cout << "Account Number: " << accountNumber << endl;
         cout << "Account Holder: " << accountHolder << endl;
@@ -72,6 +82,7 @@ void displayActions() {
     cout << "Press 'D' to deposit  : " << endl;
     cout << "Press 'W' to withdraw  : " << endl;
     cout << "Press 'S' to display the balance : " << endl;
+    cout << "Press 'T' to transfer funds : " << endl;
     cout << "Press 'X' to log out : " << endl;
     cout << "---------------------------------------------------------------------------------------------------------------" << endl;
 }
@@ -148,14 +159,26 @@ int main() {
                             } else if (input == 'S') {
                                 account.display();
                                 displayActions();
+                            } else if (input == 'T') {
+                                int recipientAccountNumber;
+                                double transfer_amount;
+
+                                cout << "Enter the recipient's account number: ";
+                                cin >> recipientAccountNumber;
+
+                                for (auto& recipient : accounts) {
+                                    if (recipient.getAccountNumber() == recipientAccountNumber) {
+                                        cout << "Enter the amount to transfer: ";
+                                        cin >> transfer_amount;
+
+                                        account.transfer(recipient, transfer_amount);
+                                    }
+                                }
+                                displayActions();
                             } else if (input == 'X') {
                                 loggedIn = false;
                                 cout << "Logged out successfully." << endl;
-                                displayActions();
-                            }
-                            else {
-                                cout << "Invalid key" << endl;
-                                displayActions();
+                                displayOptions();
                             }
                         }
                     } else {
