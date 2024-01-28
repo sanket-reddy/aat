@@ -1,63 +1,64 @@
 BankAccount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^class BankAccount {$/;"	class	line:7
-accountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int accountNumber;$/;"	member	line:9	class:BankAccount	access:private
-accountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    string accountHolder;$/;"	member	line:10	class:BankAccount	access:private
-balance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    double balance;$/;"	member	line:11	class:BankAccount	access:private
-pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int pin; \/\/ Added PIN attribute$/;"	member	line:12	class:BankAccount	access:private
-BankAccount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    BankAccount(const string& holder, double initialBalance, int num, int accountPin)$/;"	function	line:15	class:BankAccount	access:public	signature:(const string& holder, double initialBalance, int num, int accountPin)
-getAccountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int getAccountNumber() const {$/;"	function	line:20	class:BankAccount	access:public	signature:() const	returns:int 
-getAccountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    string getAccountHolder() const {$/;"	function	line:24	class:BankAccount	access:public	signature:() const	returns:string 
-getBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    double getBalance() const {$/;"	function	line:28	class:BankAccount	access:public	signature:() const	returns:double 
-getPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int getPin() const {$/;"	function	line:32	class:BankAccount	access:public	signature:() const	returns:int 
-deposit	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void deposit(double amount) {$/;"	function	line:36	class:BankAccount	access:public	signature:(double amount)	returns:void 
-withdraw	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void withdraw(double amount) {$/;"	function	line:40	class:BankAccount	access:public	signature:(double amount)	returns:void 
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "Insufficient funds!" << endl;$/;"	local	line:44	type:cout
-display	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void display() const {$/;"	function	line:48	class:BankAccount	access:public	signature:() const	returns:void 
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Account Number: " << accountNumber << endl;$/;"	local	line:49	type:coutaccountNumber
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Account Holder: " << accountHolder << endl;$/;"	local	line:50	type:coutaccountHolder
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Balance: $" << balance << endl;$/;"	local	line:51	type:coutbalance
+nextAccountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    static int nextAccountNumber;$/;"	member	line:9	class:BankAccount	access:private
+accountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int accountNumber;$/;"	member	line:10	class:BankAccount	access:private
+accountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    string accountHolder;$/;"	member	line:11	class:BankAccount	access:private
+balance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    double balance;$/;"	member	line:12	class:BankAccount	access:private
+pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int pin;$/;"	member	line:13	class:BankAccount	access:private
+BankAccount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    BankAccount(const string& holder, double initialBalance, int accountPin)$/;"	function	line:16	class:BankAccount	access:public	signature:(const string& holder, double initialBalance, int accountPin)
+getAccountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int getAccountNumber() const {$/;"	function	line:21	class:BankAccount	access:public	signature:() const	returns:int 
+getAccountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    string getAccountHolder() const {$/;"	function	line:25	class:BankAccount	access:public	signature:() const	returns:string 
+getBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    double getBalance() const {$/;"	function	line:29	class:BankAccount	access:public	signature:() const	returns:double 
+getPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    int getPin() const {$/;"	function	line:33	class:BankAccount	access:public	signature:() const	returns:int 
+deposit	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void deposit(double amount) {$/;"	function	line:37	class:BankAccount	access:public	signature:(double amount)	returns:void 
+withdraw	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void withdraw(double amount) {$/;"	function	line:41	class:BankAccount	access:public	signature:(double amount)	returns:void 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "Insufficient funds!" << endl;$/;"	local	line:45	type:cout
+display	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    void display() const {$/;"	function	line:49	class:BankAccount	access:public	signature:() const	returns:void 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Account Number: " << accountNumber << endl;$/;"	local	line:50	type:coutaccountNumber
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Account Holder: " << accountHolder << endl;$/;"	local	line:51	type:coutaccountHolder
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Balance: $" << balance << endl;$/;"	local	line:52	type:coutbalance
 verifyPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    bool verifyPin(int enteredPin) const {$/;"	function	line:55	class:BankAccount	access:public	signature:(int enteredPin) const	returns:bool 
-main	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^int main() {$/;"	function	line:60	signature:()	returns:int 
-accounts	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    vector<BankAccount> accounts;$/;"	local	line:61	type:vector
-input	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    char input;$/;"	local	line:63
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:66	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Press 'Q' to quit : " << endl;$/;"	local	line:67	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Press 'C' to create a new user : " << endl;$/;"	local	line:68	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Press 'D' to deposit  : " << endl;$/;"	local	line:69	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Press 'W' to withdraw  : " << endl;$/;"	local	line:70	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "Press 'S' to display the balance : " << endl;$/;"	local	line:71	type:cout
-input	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cin >> input;$/;"	local	line:72	type:cin
-accountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            string accountHolder;$/;"	local	line:75	type:string
-initialBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            double initialBalance;$/;"	local	line:76
-pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int pin; \/\/ Added variable for PIN$/;"	local	line:77
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:79	type:cout
-accountHolder	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> accountHolder;$/;"	local	line:81	type:cin
-initialBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> initialBalance;$/;"	local	line:84	type:cin
-pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> pin;$/;"	local	line:87	type:cin
-no_of_accounts	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int no_of_accounts = accounts.size();$/;"	local	line:89
-BankAccount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            accounts.push_back(BankAccount(accountHolder, initialBalance, no_of_accounts + 1, pin));$/;"	prototype	line:90	signature:(accountHolder, initialBalance, no_of_accounts + 1, pin)	returns:accounts push_back 
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:91	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "The user has been successfully created " << endl;$/;"	local	line:92	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "Username: " << accountHolder << endl;$/;"	local	line:94	type:coutaccountHolder
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "Current balance: $" << initialBalance << endl;$/;"	local	line:95	type:coutinitialBalance
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:96	type:cout
-account_number	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int account_number;$/;"	local	line:98
-enteredPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int enteredPin;$/;"	local	line:99
-account_number	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> account_number;$/;"	local	line:102	type:cin
-enteredPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                cin >> enteredPin;$/;"	local	line:107	type:cin
-curr	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                const BankAccount& curr = accounts[account_number];$/;"	local	line:109	type:BankAccount
-deposit_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        double deposit_amount;$/;"	local	line:114
-deposit_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        cin >> deposit_amount;$/;"	local	line:116	type:cin
-deposit	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        accounts[account_number].deposit(deposit_amount);$/;"	prototype	line:117	signature:(deposit_amount)	returns:accounts 
-withdraw_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        double withdraw_amount;$/;"	local	line:120
-withdraw_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        cin >> withdraw_amount;$/;"	local	line:122	type:cin
-withdraw	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                            accounts[account_number].withdraw(withdraw_amount);$/;"	prototype	line:125	signature:(withdraw_amount)	returns:accounts 
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                            cout << "Insufficient Funds" << endl;$/;"	local	line:128	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                    cout << "Invalid PIN!" << endl;$/;"	local	line:134	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                cout << "Invalid account number!" << endl;$/;"	local	line:137	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:143	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Final Account Information:" << endl;$/;"	local	line:144	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:146	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << endl;$/;"	local	line:147	type:cout
-display	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        account.display();$/;"	prototype	line:148	signature:()	returns:account 
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^        cout << endl;$/;"	local	line:149	type:cout
-endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:151	type:cout
+nextAccountNumber	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^int BankAccount::nextAccountNumber = 1;$/;"	member	line:60	class:BankAccount
+displayOptions	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^void displayOptions() {$/;"	function	line:62	signature:()	returns:void 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:63	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'C' to create a new account : " << endl;$/;"	local	line:64	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'L' to log in : " << endl;$/;"	local	line:65	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'Q' to quit : " << endl;$/;"	local	line:66	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:67	type:cout
+displayActions	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^void displayActions() {$/;"	function	line:70	signature:()	returns:void 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:71	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'D' to deposit  : " << endl;$/;"	local	line:72	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'W' to withdraw  : " << endl;$/;"	local	line:73	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'S' to display the balance : " << endl;$/;"	local	line:74	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "Press 'X' to log out : " << endl;$/;"	local	line:75	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    cout << "---------------------------------------------------------------------------------------------------------------" << endl;$/;"	local	line:76	type:cout
+main	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^int main() {$/;"	function	line:79	signature:()	returns:int 
+accounts	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    vector<BankAccount> accounts;$/;"	local	line:80	type:vector
+loggedIn	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    bool loggedIn = false;$/;"	local	line:81
+input	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^    char input;$/;"	local	line:83
+input	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> input;$/;"	local	line:88	type:cin
+username	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            string username;$/;"	local	line:94	type:string
+newPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int newPin;$/;"	local	line:95
+initialBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            double initialBalance;$/;"	local	line:96
+username	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> username;$/;"	local	line:99	type:cin
+newPin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> newPin;$/;"	local	line:102	type:cin
+initialBalance	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> initialBalance;$/;"	local	line:105	type:cin
+BankAccount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            accounts.push_back(BankAccount(username, initialBalance, newPin));$/;"	prototype	line:107	signature:(username, initialBalance, newPin)	returns:accounts push_back 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cout << "Account created successfully! Please log in." << endl;$/;"	local	line:108	type:cout
+username	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            string username;$/;"	local	line:110	type:string
+pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            int pin;$/;"	local	line:111
+username	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^            cin >> username;$/;"	local	line:114	type:cin
+pin	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                    cin >> pin;$/;"	local	line:119	type:cin
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        cout << "Log in successful. Welcome, " << username << "!" << endl;$/;"	local	line:123	type:coutusername
+input	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                            cin >> input;$/;"	local	line:127	type:cin
+deposit_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                double deposit_amount;$/;"	local	line:130
+deposit_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                cin >> deposit_amount;$/;"	local	line:132	type:cin
+deposit	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                account.deposit(deposit_amount);$/;"	prototype	line:133	signature:(deposit_amount)	returns:account 
+withdraw_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                double withdraw_amount;$/;"	local	line:137
+withdraw_amount	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                cin >> withdraw_amount;$/;"	local	line:139	type:cin
+withdraw	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                    account.withdraw(withdraw_amount);$/;"	prototype	line:142	signature:(withdraw_amount)	returns:account 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                    cout << "Insufficient funds!" << endl;$/;"	local	line:145	type:cout
+display	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                account.display();$/;"	prototype	line:149	signature:()	returns:account 
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                cout << "Logged out successfully." << endl;$/;"	local	line:153	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                                cout << "Invalid key" << endl;$/;"	local	line:157	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                        cout << "Incorrect PIN. Try again." << endl;$/;"	local	line:162	type:cout
+endl	C:\Users\SANKETH\Desktop\aatforoops\bank\main.cpp	/^                cout << "User not found. Please create a new account or try again." << endl;$/;"	local	line:169	type:cout

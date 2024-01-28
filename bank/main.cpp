@@ -6,15 +6,16 @@ using namespace std;
 
 class BankAccount {
 private:
+    static int nextAccountNumber;
     int accountNumber;
     string accountHolder;
     double balance;
-    int pin; // Added PIN attribute
+    int pin;
 
 public:
-    BankAccount(const string& holder, double initialBalance, int num, int accountPin)
+    BankAccount(const string& holder, double initialBalance, int accountPin)
         : accountHolder(holder), balance(initialBalance), pin(accountPin) {
-        accountNumber = num;
+        accountNumber = nextAccountNumber++;
     }
 
     int getAccountNumber() const {
@@ -51,104 +52,124 @@ public:
         cout << "Balance: $" << balance << endl;
     }
 
-    // Added function to verify PIN
     bool verifyPin(int enteredPin) const {
         return (enteredPin == pin);
     }
 };
 
+int BankAccount::nextAccountNumber = 1;
+
+void displayOptions() {
+    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "Press 'C' to create a new account : " << endl;
+    cout << "Press 'L' to log in : " << endl;
+    cout << "Press 'Q' to quit : " << endl;
+    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
+}
+
+void displayActions() {
+    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "Press 'D' to deposit  : " << endl;
+    cout << "Press 'W' to withdraw  : " << endl;
+    cout << "Press 'S' to display the balance : " << endl;
+    cout << "Press 'X' to log out : " << endl;
+    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
+}
+
 int main() {
     vector<BankAccount> accounts;
+    bool loggedIn = false;
 
     char input;
 
-    while (input != 'Q') {
-        cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-        cout << "Press 'Q' to quit : " << endl;
-        cout << "Press 'C' to create a new user : " << endl;
-        cout << "Press 'D' to deposit  : " << endl;
-        cout << "Press 'W' to withdraw  : " << endl;
-        cout << "Press 'S' to display the balance : " << endl;
-        cin >> input;
+    while (true) {
+        if (!loggedIn) {
+            displayOptions();
+            cin >> input;
+        }
 
-        if (input == 'C') {
-            string accountHolder;
+        if (input == 'Q') {
+            break;
+        } else if (input == 'C') {
+            string username;
+            int newPin;
             double initialBalance;
-            int pin; // Added variable for PIN
 
-            cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-            cout << "Enter account holder name: ";
-            cin >> accountHolder;
+            cout << "Enter your username: ";
+            cin >> username;
 
-            cout << "Enter initial balance: ";
+            cout << "Enter your 4-digit PIN: ";
+            cin >> newPin;
+
+            cout << "Enter initial balance: $";
             cin >> initialBalance;
 
-            cout << "Enter PIN for the account: ";
-            cin >> pin;
+            accounts.push_back(BankAccount(username, initialBalance, newPin));
+            cout << "Account created successfully! Please log in." << endl;
+        } else if (input == 'L') {
+            string username;
+            int pin;
 
-            int no_of_accounts = accounts.size();
-            accounts.push_back(BankAccount(accountHolder, initialBalance, no_of_accounts + 1, pin));
-            cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-            cout << "The user has been successfully created " << endl;
-            cout << "Account Number: " << accounts.back().getAccountNumber() << endl;
-            cout << "Username: " << accountHolder << endl;
-            cout << "Current balance: $" << initialBalance << endl;
-            cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-        } else if (input == 'D' || input == 'W' || input == 'S') {
-            int account_number;
-            int enteredPin;
+            cout << "Enter your username: ";
+            cin >> username;
 
-            cout << "Enter the account number: ";
-            cin >> account_number;
+            for (auto& account : accounts) {
+                if (account.getAccountHolder() == username) {
+                    cout << "Enter your PIN: ";
+                    cin >> pin;
 
-            // Check if the account number is within the valid range
-            if (account_number >= 0 && account_number < accounts.size()) {
-                cout << "Enter PIN for the account: ";
-                cin >> enteredPin;
+                    if (account.verifyPin(pin)) {
+                        loggedIn = true;
+                        cout << "Log in successful. Welcome, " << username << "!" << endl;
+                        displayActions();
 
-                const BankAccount& curr = accounts[account_number];
+                        while (input != 'X') {
+                            cin >> input;
 
-                // Verify PIN before proceeding
-                if (curr.verifyPin(enteredPin)) {
-                    if (input == 'D') {
-                        double deposit_amount;
-                        cout << "Enter the amount to be deposited: ";
-                        cin >> deposit_amount;
-                        accounts[account_number].deposit(deposit_amount);
-                        cout << "Deposit successful. Available Balance: $" << accounts[account_number].getBalance() << endl;
-                    } else if (input == 'W') {
-                        double withdraw_amount;
-                        cout << "Enter the amount to be withdrawn: ";
-                        cin >> withdraw_amount;
+                            if (input == 'D') {
+                                double deposit_amount;
+                                cout << "Enter the amount to be deposited: ";
+                                cin >> deposit_amount;
+                                account.deposit(deposit_amount);
+                                cout << "Deposit successful. Available Balance: $" << account.getBalance() << endl;
+                                displayActions();
+                            } else if (input == 'W') {
+                                double withdraw_amount;
+                                cout << "Enter the amount to be withdrawn: ";
+                                cin >> withdraw_amount;
 
-                        if (accounts[account_number].getBalance() >= withdraw_amount) {
-                            accounts[account_number].withdraw(withdraw_amount);
-                            cout << "Withdrawal successful. Available Balance: $" << accounts[account_number].getBalance() << endl;
-                        } else {
-                            cout << "Insufficient Funds" << endl;
+                                if (account.getBalance() >= withdraw_amount) {
+                                    account.withdraw(withdraw_amount);
+                                    cout << "Withdrawal successful. Available Balance: $" << account.getBalance() << endl;
+                                } else {
+                                    cout << "Insufficient funds!" << endl;
+                                }
+                                displayActions();
+                            } else if (input == 'S') {
+                                account.display();
+                                displayActions();
+                            } else if (input == 'X') {
+                                loggedIn = false;
+                                cout << "Logged out successfully." << endl;
+                                displayActions();
+                            }
+                            else {
+                                cout << "Invalid key" << endl;
+                                displayActions();
+                            }
                         }
-                    } else if (input == 'S') {
-                        cout << "Balance: $" << accounts[account_number].getBalance() << endl;
+                    } else {
+                        cout << "Incorrect PIN. Try again." << endl;
+                        displayOptions();
                     }
-                } else {
-                    cout << "Invalid PIN!" << endl;
                 }
-            } else {
-                cout << "Invalid account number!" << endl;
+            }
+
+            if (!loggedIn) {
+                cout << "User not found. Please create a new account or try again." << endl;
             }
         }
     }
-
-    // Display final account information
-    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-    cout << "Final Account Information:" << endl;
-    for (const auto& account : accounts) {
-        cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-        cout << endl;
-        account.display();
-        cout << endl;
-    }
-    cout << "---------------------------------------------------------------------------------------------------------------" << endl;
 
     return 0;
 }
