@@ -1,10 +1,7 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
-#include <iomanip>
-#include <sstream>
-
+#include <iomanip> 
 using namespace std;
 
 class Person {
@@ -73,8 +70,7 @@ public:
 
         if (other.verifyPin(mergingPin)) {
             *this = *this + other;  // Use the overloaded + operator for merging
-            cout << "Accounts merged successfully. New balance: $" << fixed << setprecision(2) << balance << endl;
-
+cout << "Accounts merged successfully. New balance: $" << fixed << setprecision(2) << balance << endl;
             // Remove the merged account
             other.balance = 0.0;  // Set balance to zero (you may want to handle this differently)
         } else {
@@ -211,31 +207,34 @@ int main() {
                                 account.display();
                                 displayActions(account);
                             } else if (input == 'T') {
-                                int recipientAccountNumber;
+                                string recipientUsername;
                                 double transfer_amount;
 
-                                cout << "Enter the recipient's account number: ";
-                                cin >> recipientAccountNumber;
+                                cout << "Enter the recipient's username: ";
+                                cin >> recipientUsername;
                                 
                                 for (auto& recipient : accounts) {
-                                    if (recipient.getAccountNumber() == recipientAccountNumber) {
+                                    if (recipient.getUsername() == recipientUsername) {
                                         cout << "Enter the amount to transfer: ";
                                         cin >> transfer_amount;
 
                                         account.transfer(recipient, transfer_amount);
+
                                     }
                                 }
                                 displayActions(account);
                             }else if(input == 'M'){
-                                 int mergeAccountNumber;
-                    cout << "Enter the account number you want to merge: ";
-                    cin >> mergeAccountNumber;
+                            string mergeUsername;
+            cout << "Enter the username of the account you want to merge: ";
+            cin >> mergeUsername;
 
-                    if (mergeAccountNumber >= 0 && mergeAccountNumber < accounts.size()) {
-                        account.mergeAccounts(accounts[mergeAccountNumber]);
-                    } else {
-                        cout << "Invalid account number." << endl;
-                    }
+            for (auto& other : accounts) {
+                if (other.getUsername() == mergeUsername) {
+                    account.mergeAccounts(other);
+                    break;
+                }
+            }
+            displayActions(account);
                             }
                              else if (input == 'X') {
                                 loggedIn = false;
