@@ -6,39 +6,37 @@ using namespace std;
 
 class BankAccount {
 private:
-//    static int nextAccountNumber;   Static variable to generate unique account numbers
-    int accountNumber;             // Account number attribute
+    int accountNumber;
     string accountHolder;
     double balance;
+    int pin; // Added PIN attribute
 
 public:
-    // Constructor
-    BankAccount(const string& holder, double initialBalance, int num)
-        : accountHolder(holder), balance(initialBalance) {
+    BankAccount(const string& holder, double initialBalance, int num, int accountPin)
+        : accountHolder(holder), balance(initialBalance), pin(accountPin) {
         accountNumber = num;
     }
 
-    // Member function to get account number
     int getAccountNumber() const {
         return accountNumber;
     }
 
-    // Member function to get account holder name
     string getAccountHolder() const {
         return accountHolder;
     }
 
-    // Member function to get account balance
     double getBalance() const {
         return balance;
     }
 
-    // Member function to deposit money
+    int getPin() const {
+        return pin;
+    }
+
     void deposit(double amount) {
         balance += amount;
     }
 
-    // Member function to withdraw money
     void withdraw(double amount) {
         if (amount <= balance) {
             balance -= amount;
@@ -47,23 +45,17 @@ public:
         }
     }
 
-    // Operator overloading for adding two accounts
-    BankAccount operator+(const BankAccount& other) const {
-        BankAccount result = *this;
-        result.balance += other.balance;
-        return result;
-    }
-
-    // Function overloading to display account information
     void display() const {
         cout << "Account Number: " << accountNumber << endl;
         cout << "Account Holder: " << accountHolder << endl;
         cout << "Balance: $" << balance << endl;
     }
-};
 
-// Initializing the static variable
-//int BankAccount::nextAccountNumber = 1;
+    // Added function to verify PIN
+    bool verifyPin(int enteredPin) const {
+        return (enteredPin == pin);
+    }
+};
 
 int main() {
     vector<BankAccount> accounts;
@@ -75,14 +67,14 @@ int main() {
         cout << "Press 'Q' to quit : " << endl;
         cout << "Press 'C' to create a new user : " << endl;
         cout << "Press 'D' to deposit  : " << endl;
-        cout << "Press 'W' to withdraw  : " << endl; 
-        cout<< "Press 'S' to display the balance : " << endl;
+        cout << "Press 'W' to withdraw  : " << endl;
+        cout << "Press 'S' to display the balance : " << endl;
         cin >> input;
 
         if (input == 'C') {
-            // Get user details
             string accountHolder;
             double initialBalance;
+            int pin; // Added variable for PIN
 
             cout << "---------------------------------------------------------------------------------------------------------------" << endl;
             cout << "Enter account holder name: ";
@@ -91,75 +83,60 @@ int main() {
             cout << "Enter initial balance: ";
             cin >> initialBalance;
 
-            // Create a new BankAccount object and add it to the vector
+            cout << "Enter PIN for the account: ";
+            cin >> pin;
+
             int no_of_accounts = accounts.size();
-            accounts.push_back(BankAccount(accountHolder, initialBalance, no_of_accounts));
+            accounts.push_back(BankAccount(accountHolder, initialBalance, no_of_accounts + 1, pin));
             cout << "---------------------------------------------------------------------------------------------------------------" << endl;
             cout << "The user has been successfully created " << endl;
             cout << "Account Number: " << accounts.back().getAccountNumber() << endl;
             cout << "Username: " << accountHolder << endl;
             cout << "Current balance: $" << initialBalance << endl;
             cout << "---------------------------------------------------------------------------------------------------------------" << endl;
-        }
-        else if (input == 'D') {
+        } else if (input == 'D' || input == 'W' || input == 'S') {
             int account_number;
-            double deposit_amount;
+            int enteredPin;
+
             cout << "Enter the account number: ";
             cin >> account_number;
-            ;
+
             // Check if the account number is within the valid range
             if (account_number >= 0 && account_number < accounts.size()) {
-                BankAccount& curr = accounts[account_number];
-                string name = curr.getAccountHolder();
-                
-                cout << "Account Holder Name: " << name << endl;
-                cout << "Enter the amount to be deposited : " <<endl;
-                cin >> deposit_amount;
-                curr.deposit(deposit_amount);
-                cout << "the deposit has been succesfully done " <<endl;
-                cout << "Avaliable Balance : " << curr.getBalance() << endl;
+                cout << "Enter PIN for the account: ";
+                cin >> enteredPin;
+
+                const BankAccount& curr = accounts[account_number];
+
+                // Verify PIN before proceeding
+                if (curr.verifyPin(enteredPin)) {
+                    if (input == 'D') {
+                        double deposit_amount;
+                        cout << "Enter the amount to be deposited: ";
+                        cin >> deposit_amount;
+                        accounts[account_number].deposit(deposit_amount);
+                        cout << "Deposit successful. Available Balance: $" << accounts[account_number].getBalance() << endl;
+                    } else if (input == 'W') {
+                        double withdraw_amount;
+                        cout << "Enter the amount to be withdrawn: ";
+                        cin >> withdraw_amount;
+
+                        if (accounts[account_number].getBalance() >= withdraw_amount) {
+                            accounts[account_number].withdraw(withdraw_amount);
+                            cout << "Withdrawal successful. Available Balance: $" << accounts[account_number].getBalance() << endl;
+                        } else {
+                            cout << "Insufficient Funds" << endl;
+                        }
+                    } else if (input == 'S') {
+                        cout << "Balance: $" << accounts[account_number].getBalance() << endl;
+                    }
+                } else {
+                    cout << "Invalid PIN!" << endl;
+                }
             } else {
                 cout << "Invalid account number!" << endl;
             }
         }
-        else if(input == 'W'){
-                int account_number;
-                double withdraw_amount;
-                 cout << "Enter the account number: ";
-            cin >> account_number;
-             if (account_number >= 0 && account_number < accounts.size()) {
-                BankAccount& curr = accounts[account_number];
-                string name = curr.getAccountHolder();
-                double balance = curr.getBalance();
-                cout << "Account Holder Name: " << name << endl;
-                cout << "Enter the amount to be withdrawen : " <<endl;
-                cin >> withdraw_amount;
-                if(balance >= withdraw_amount){
-                    curr.withdraw(withdraw_amount);
-                    cout << "the withdraw has been succesfully done " <<endl;
-                    cout << "Avaliable Balance : " << curr.getBalance() << endl;
-                }
-                else{
-                    cout << "Insufficient Funds" <<endl;
-                }
-                
-            } else {
-                cout << "Invalid account number!" << endl;
-            }
-            }
-            
-            else if(input == 'S'){
-                 int account_number;
-                 cout << "Enter the account number: ";
-                 cin >> account_number;
-                 if (account_number >= 0 && account_number < accounts.size()) {
-                BankAccount& curr = accounts[account_number];
-                curr.display();
-                     }
-                 else{
-                     cout << "Invalid account number!" << endl;
-                 }
-            }
     }
 
     // Display final account information
